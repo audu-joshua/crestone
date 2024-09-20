@@ -10,7 +10,8 @@ export function Footer() {
         
         <div className='flex items-center lg:w-[40%] justify-between my-4 gap-2 bg-white px-2 rounded-lg lg:rounded-2xl py-2 '>
           <div className='flex items-center w-full'>
-        <FaBox className=' text-2xl'/>
+        <img src={'/images/icon.svg'} className=' h-8 w-8'>
+        </img>
         <input placeholder='Enter your mail' className='text-black lg:py-1 w-full lg:px-8 pl-2 lg:pl-4 outline-none py-2 rounded-lg placeholder:text-black'/>
         </div>
         <button className='bg-black p-2 px-4 lg:rounded-lg text-white rounded-md'> Submit</button>
@@ -28,7 +29,7 @@ export function Footer() {
 
         <div className=' grid gap-6 py-4 md:flex md:justify-between md:gap-x-8'>
           <div className='text-white flex gap-4'>
-            <FaBox/>
+            <FaPhone/>
             <div>
               <p> Tel </p>
               <p> 310 437-276 </p>
@@ -36,7 +37,7 @@ export function Footer() {
           </div>
 
           <div className='text-white flex gap-4'>
-            <FaPhone/>
+          <FaBox/>
             <div>
               <p> Mail </p>
               <p className=''> james@crestoneholdings.com </p>
