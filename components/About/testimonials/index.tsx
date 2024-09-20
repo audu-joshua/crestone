@@ -16,7 +16,6 @@ export function Testimonials() {
   };
 
   const TotalTestimonial = TestimonialData.length
-  const CurrentTestimonial = setCurrent.length
 
 
   useEffect(() => {
