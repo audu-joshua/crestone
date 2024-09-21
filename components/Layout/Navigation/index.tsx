@@ -140,7 +140,7 @@ export const Navigation = () => {
         {menuItems.map((item, index) => (
           <Link
             key={index}
-            className={`flex justify-between hover:ease-in-out hover:duration-1000 cursor-pointer hover:bg-black hover:text-white rounded-2xl px-8 py-4 bg-slate-300 ${item.className ?? ''}`}
+            className={`flex justify-between hover:ease-in-out hover:duration-1000 cursor-pointer hover:bg-black hover:text-white rounded-2xl px-8 py-4 bg-[#F4F4F4] ${item.className ?? ''}`}
             onClick={() => setHamburger(prevVal => !prevVal)}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}

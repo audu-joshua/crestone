@@ -19,8 +19,8 @@ export function ListingHero() {
         <div className='md:flex md:flex-col md:items-end justify-end'>
             <p className='text-black pb-4'> Discover a Range of Properties Tailored to Your Investment Goals</p>
             <div className='bg-black p-2 rounded-2xl w-fit flex gap-2 px-4'>
-                <img src={'/images/apple.png'}/>
-                <img src={'/images/android.png'}/>
+                <img src={'/images/apple.svg'}/>
+                <img src={'/images/android.svg'}/>
                 <p className='text-white font-[550]'> Coming Soon </p>
             </div>
         </div>

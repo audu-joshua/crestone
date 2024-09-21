@@ -1,16 +1,20 @@
 // Combined Mobile & Desktop Images Dataset
 export const BgimgData = [
     {
-      mobileImg: '/images/heroMobile1.png',
-      desktopImg: '/images/heroDesktop1.png'
+      mobileImg: '/images/L1Mobile.png',
+      desktopImg: '/images/L1Desktop.png'
     },
     {
-      mobileImg: '/images/heroMobile2.png',
-      desktopImg: '/images/heroDesktop2.png'
+      mobileImg: '/images/L2Mobile.jpg',
+      desktopImg: '/images/L2Desktop.jpg'
     },
     {
-      mobileImg: '/images/heroMobile3.png',
-      desktopImg: '/images/heroDesktop3.png'
-    }
+      mobileImg: '/images/L3Mobile.jpg',
+      desktopImg: '/images/L3Desktop.jpg'
+    },
+    {
+        mobileImg: '/images/heroCoverMobile.png',
+        desktopImg: '/images/heroCoverDesktop.png'
+      }
   ];
   
