@@ -1,6 +1,5 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { BgimgData } from '@/utils/listing';
 import { BsArrowRight, BsSearch } from 'react-icons/bs';
 
