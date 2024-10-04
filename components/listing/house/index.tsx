@@ -73,8 +73,11 @@ export function Houses() {
                   <label className='text-white'> Type </label>
                   <select className='bg-transparent optional:bg-black rounded-md p-1 outline-none w-full'>
                     <option className='bg-transparent'> Select </option>
-                    <option className='bg-transparent'> Condomium </option>
+                    <option className='bg-transparent'> Condomium </option> 
                     <option className='bg-transparent'> Luxury </option>
+                    <option className='bg-transparent'> Apartments </option>
+                    <option className='bg-transparent'> Green Homes </option>
+                    <option className='bg-transparent'> Student Housing </option>
                   </select>
                 </div>
 
