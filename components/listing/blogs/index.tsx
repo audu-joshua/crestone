@@ -32,7 +32,7 @@ export default function Blogs() {
                             </div>
                         </div>
                     </div>
-                    <p className=' text-gray-700'> Learn proven strategies to optimize rental
+                    <p className=' text-[#8E8E8E]'> Learn proven strategies to optimize rental
                         income, attract quality tenants, and maximÁ· </p>
                 </div>
 
@@ -48,7 +48,7 @@ export default function Blogs() {
                             </div>
                         </div>
                     </div>
-                    <p className=' text-gray-700'> Learn proven strategies to optimize rental
+                    <p className=' text-[#8E8E8E]'> Learn proven strategies to optimize rental
                         income, attract quality tenants, and maximÁ· </p>
                 </div>
 
@@ -64,7 +64,7 @@ export default function Blogs() {
                             </div>
                         </div>
                     </div>
-                    <p className=' text-gray-700'> Learn proven strategies to optimize rental
+                    <p className=' text-[#8E8E8E]'> Learn proven strategies to optimize rental
                         income, attract quality tenants, and maximÁ· </p>
                 </div>
             </div>

@@ -15,8 +15,6 @@ export const Navigation = () => {
   const pathname = usePathname();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  
-
   const handleMouseEnter = (index: number) => {
     setHoveredIndex(index);
   };
@@ -29,78 +27,88 @@ export const Navigation = () => {
     { href: "/", text: "Home" },
     { href: "/about", text: "About" },
     { href: "/listing", text: "Listing" },
-    { href: "/career", text: "Help Center" },
+    { href: "/contact", text: "Help Center" },
     { href: "/career", text: "Become a Member", className: "text-red-600 hover:bg-[#ffba00] hover:text-black" }
   ];
+
+  // Conditionally change styles for specific pages
+  const isContactPage = pathname === "/contact" ;
+  const isOtherSpecificPage = pathname === "/";  // You can add more routes as needed
+  
+  const logoSrc = isContactPage || isOtherSpecificPage ? "/images/logowhite.svg" : "/images/logoblack.svg";
+
+  const menuBgColor = isContactPage || isOtherSpecificPage ? "bg-white" :  "bg-black";
+  const menuTextColor = isContactPage || isOtherSpecificPage ? "text-black" :  "text-white";
+  const menuBgColor2 = isContactPage || isOtherSpecificPage ?  "bg-black" :  "bg-white";
+  const signupHelp = isContactPage || isOtherSpecificPage ? "text-white" :  "text-black";
+  const signupHelpdivider = isContactPage || isOtherSpecificPage ? "border-r-white border-l-white " :  "border-r-black border-l-black";
+  const navbg = isContactPage || isOtherSpecificPage ?  "bg-black" :  "bg-white";
 
   return (
     <>
       <header
-        className={`fixed w-full flex items-center justify-between top-0 px-[20px] md:px-[25px] gap-x-[60px] pb-2 bg-black bg-opacity-15 xl:px-[97px] z-50`}
+        className={` ${navbg} fixed w-full flex items-center justify-between top-0 px-[20px] md:px-[25px] py-2 md:py-0 xl:px-[97px] z-50`}
       >
         <Link href={"/"}>
           <img
-            src={"/images/logowhite.png"}
+            src={logoSrc} // Dynamically change logo source
             alt="logo"
             className='md:hidden'
           />
         </Link>
 
-        <div className='  hidden md:flex justify-between w-full pt-[20px]'>
+        <div className='  hidden md:flex justify-between w-full py-3 items-center'>
           <div
-            className=" relative w-fit p-[4px]  overflow-hidden"
+            className="relative w-fit p-[4px] overflow-hidden"
             onClick={() => {
               setHamburger((prevVal) => !prevVal);
             }}
           >
-            <div className='flex cursor-pointer bg-white py-2 px-4 w-28 justify-between rounded-2xl items-center text-black '>
-              <div>
-              <div className=' grid gap-1'>
-            <div
-            className={`w-6 h-0.5 bg-black transition-transform duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
-          />
-          <div
-            className={`w-6 h-0.5 bg-black transition-opacity duration-300 ${hamburger ? 'opacity-0' : ''}`}
-          />
-          <div
-            className={`w-6 h-0.5 bg-black transition-transform duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
-          />
-
-            </div>
+            <div className={`flex cursor-pointer ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center ${menuTextColor}`}>
+              <div className='grid gap-1'>
+                <div
+                  className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
+                />
+                <div
+                  className={`w-6 h-0.5 ${menuBgColor2} transition-opacity duration-300 ${hamburger ? 'opacity-0' : ''}`}
+                />
+                <div
+                  className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
+                />
               </div>
-
-              <p className=' '>  Menu</p>
+              <p className=' font-bold'>Menu</p>
             </div>
           </div>
 
           <div>
             <Link href={"/"}>
               <img
-                src={"/images/logowhite.png"}
+                src={logoSrc} // Dynamically change logo for larger screens as well
                 alt="logo"
-                className=''
               />
             </Link>
           </div>
 
-          <nav className=" text-white ">
-            <ul className=" grid grid-flow-col line-clamp-4 text-base items-center gap-x-[30px] justify-between">
-              <li className=''>
+          <nav className="text-white">
+            <ul className={` ${signupHelp} grid grid-flow-col line-clamp-4 text-base items-center gap-x-[30px] justify-between`}>
+              <li>
                 <Link
                   href={"/services"}
                   style={pathname.includes("/services") ? active : {}}
+                  className='font-bold'
                 >
-                  Services
+                  Help Center
                 </Link>
               </li>
 
-              <span className=' h-4 w-1 border-2 border-r-white'></span>
+              <span className={`h-4 ${signupHelpdivider} w-1 border-2`}></span>
               <li>
                 <Link
                   href={"/career"}
                   style={pathname.includes("/career") ? active : {}}
+                  className='font-bold'
                 >
-                  Career
+                  Signup
                 </Link>
               </li>
             </ul>
@@ -108,32 +116,31 @@ export const Navigation = () => {
         </div>
 
         <div
-          className="md:hidden cursor-pointer relative w-fit p-[4px] pt-[20px] overflow-hidden"
+          className="md:hidden cursor-pointer relative w-fit h-full overflow-hidden"
           onClick={() => {
             setHamburger((prevVal) => !prevVal);
           }}
         >
-          <div className='flex bg-white py-2 px-4 w-28 justify-between rounded-2xl items-center text-black cursor-pointer '>
-            <div className=' grid gap-1'>
-            <div
-            className={`w-6 h-0.5 bg-black transition-transform duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
-          />
-          <div
-            className={`w-6 h-0.5 bg-black transition-opacity duration-300 ${hamburger ? 'opacity-0' : ''}`}
-          />
-          <div
-            className={`w-6 h-0.5 bg-black transition-transform duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
-          />
-
+          <div className={`flex ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center cursor-pointer ${menuTextColor}`}>
+            <div className='grid gap-1'>
+              <div
+                className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
+              />
+              <div
+                className={`w-6 h-0.5 ${menuBgColor2} transition-opacity duration-300 ${hamburger ? 'opacity-0' : ''}`}
+              />
+              <div
+                className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
+              />
             </div>
 
-            <p className=' '>  Menu</p>
+            <p className=' font-bold'>Menu</p>
           </div>
         </div>
       </header>
 
       <div
-        className={`flex py-4 px-4 flex-col gap-2 fixed w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 ${hamburger ? "top-[70px] h-[100vh]" : "top-[-400%] h-fit"
+        className={`flex py-4 px-4 flex-col gap-2 fixed w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 ${hamburger ? "top-[70px] h-[100vh] md:h-fit" : "top-[-400%] h-fit"
           } text-center text-black bg-white left-0`}
         style={{ transition: "all 0.5s ease-in" }}
       >
@@ -153,3 +160,4 @@ export const Navigation = () => {
     </>
   );
 };
+

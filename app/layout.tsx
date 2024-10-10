@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google"; // Updated font import
 import "./globals.css";
 import { Navigation } from "@/components/Layout/Navigation";
 import { Footer } from "@/components/Layout/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] }); // Initialize Plus Jakarta Sans
 
 export const metadata: Metadata = {
   title: "Credstone",
@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Navigation/>
-      <body className={inter.className} >{children}</body>
-      <Footer/>
+      <Navigation />
+      <body className={plusJakartaSans.className}>{children}</body> {/* Updated to use Plus Jakarta Sans */}
+      <Footer />
     </html>
   );
 }

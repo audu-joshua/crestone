@@ -20,7 +20,7 @@ export function Footer() {
 
       <div className='md:flex md:w-full md:justify-between'>
         <div className=' md:w-[40%] lg:w-[35%]'>
-          <img src='./images/logowhite.png' className='py-2'></img>
+          <img src='./images/logowhite.svg' className='py-2'></img>
           <p className='text-[#8E8E8E] lg:font-medium lg:text-[15px] leading-[21.16px] py-4'>
           We focus on personal and professional development through mindset and investing, 
           so you can grow with confidence
