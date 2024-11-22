@@ -36,11 +36,11 @@ export function CarouselHome() {
     <div className='px-3 md:px-6 lg:px-12 bg-white'>
       <div className='md:flex md:py-14 lg:py-20 justify-between md:gap-12 text-black'>
         <div className='md:w-[50%]'>
-          <h2 className='text-4xl py-10 md font-bold leading-tight'> Figma ipsum component variant main layer. Horizontal</h2>
+          <h2 className='text-4xl py-10 md font-bold leading-tight'> Unlock Your Dream Space</h2>
         </div>
         <div className='md:w-[50%]'>
           <p className='text-base'>
-            Figma ipsum component variant main layer. Font star variant blur union link move component blur arrange. Underline clip bullet italic comment strikethrough ipsum. Arrange ipsum figma arrange underline asset bold. Vector text pixel move community vector content ipsum. Underline invite clip layout vertical font ipsum hand undo comment. Bold group thumbnail fill asset pen. Subtract duplicate layer arrange star outline. Scrolling stroke blur horizontal draft flows pencil style stroke. Object.
+          Where visions become addresses, and every key unlocks a world of possibilities.Discover a seamless blend of expertise and passion, transforming properties into stories of success. Let us guide you on a journey that’s as remarkable as the destination.
           </p>
 
           <div className='py-8 flex justify-between'>

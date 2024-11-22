@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { BsArrowUpRight } from 'react-icons/bs'
 
@@ -69,12 +70,12 @@ export default function Blogs() {
                 </div>
             </div>
 
-            <div className='p-4 h-fit bg-black px-7 text-white md:hidden flex rounded-full gap-4 items-center justify-between w-fit mt-8'>
+            <Link href={"/blogs"} className='p-4 h-fit bg-black px-7 text-white md:hidden flex rounded-full gap-4 items-center justify-between w-fit mt-8'>
                 <p className=''>
                     See More 
                 </p>
                 <BsArrowUpRight className=' text-xl font-semibold'/>
-                </div>
+                </Link>
 
         </div>
     )

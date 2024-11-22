@@ -32,65 +32,66 @@ export const Navigation = () => {
   ];
 
   // Conditionally change styles for specific pages
-  const isContactPage = pathname === "/contact" ;
-  const isOtherSpecificPage = pathname === "/";  // You can add more routes as needed
+  const isContactPage = pathname === "/contact";
+  const isOtherSpecificPage = pathname === "/";
   
   const logoSrc = isContactPage || isOtherSpecificPage ? "/images/logowhite.svg" : "/images/logoblack.svg";
-
-  const menuBgColor = isContactPage || isOtherSpecificPage ? "bg-white" :  "bg-black";
-  const menuTextColor = isContactPage || isOtherSpecificPage ? "text-black" :  "text-white";
-  const menuBgColor2 = isContactPage || isOtherSpecificPage ?  "bg-black" :  "bg-white";
-  const signupHelp = isContactPage || isOtherSpecificPage ? "text-white" :  "text-black";
-  const signupHelpdivider = isContactPage || isOtherSpecificPage ? "border-r-white border-l-white " :  "border-r-black border-l-black";
-  const navbg = isContactPage || isOtherSpecificPage ?  "bg-black" :  "bg-white";
+  const menuBgColor = isContactPage || isOtherSpecificPage ? "bg-white" : "bg-black";
+  const menuTextColor = isContactPage || isOtherSpecificPage ? "text-black" : "text-white";
+  const menuBgColor2 = isContactPage || isOtherSpecificPage ? "bg-black" : "bg-white";
+  const signupHelp = isContactPage || isOtherSpecificPage ? "text-white" : "text-black";
+  const signupHelpdivider = isContactPage || isOtherSpecificPage ? "border-r-white border-l-white" : "border-r-black border-l-black";
+  const navbg = isContactPage || isOtherSpecificPage ? "bg-black" : "bg-white";
 
   return (
     <>
       <header
-        className={` ${navbg} fixed w-full flex items-center justify-between top-0 px-[20px] md:px-[25px] py-2 md:py-0 xl:px-[97px] z-50`}
+        className={`${navbg} fixed w-full flex items-center justify-between top-0 px-[20px] md:px-[25px] py-2 md:py-0 xl:px-[97px] z-50`}
       >
         <Link href={"/"}>
           <img
-            src={logoSrc} // Dynamically change logo source
+            src={logoSrc}
             alt="logo"
             className='md:hidden'
           />
         </Link>
 
-        <div className='  hidden md:flex justify-between w-full py-3 items-center'>
+        <div className='hidden md:flex justify-between w-full py-3 items-center'>
           <div
             className="relative w-fit p-[4px] overflow-hidden"
             onClick={() => {
               setHamburger((prevVal) => !prevVal);
             }}
           >
-            <div className={`flex cursor-pointer ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center ${menuTextColor}`}>
-              <div className='grid gap-1'>
+            <div className={`flex cursor-pointer ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center ${menuTextColor} relative`}>
+              {/* Hamburger icon with sliding animation */}
+              <div className={`grid gap-1 transition-transform duration-500 ${hamburger ? '-translate-x-2' : 'translate-x-0'}`}>
                 <div
-                  className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
+                  className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
                 />
                 <div
-                  className={`w-6 h-0.5 ${menuBgColor2} transition-opacity duration-300 ${hamburger ? 'opacity-0' : ''}`}
+                  className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'opacity-0' : ''}`}
                 />
                 <div
-                  className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
+                  className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
                 />
               </div>
-              <p className=' font-bold'>Menu</p>
+              {/* Menu text with sliding animation */}
+              <p className={`font-bold transition-transform duration-500 ${hamburger ? 'translate-x-2' : 'translate-x-0'}`}>Menu</p>
             </div>
           </div>
 
           <div>
             <Link href={"/"}>
               <img
-                src={logoSrc} // Dynamically change logo for larger screens as well
+                src={logoSrc}
                 alt="logo"
               />
             </Link>
           </div>
 
           <nav className="text-white">
-            <ul className={` ${signupHelp} grid grid-flow-col line-clamp-4 text-base items-center gap-x-[30px] justify-between`}>
+            <ul className={`${signupHelp} grid grid-flow-col line-clamp-4 text-base items-center gap-x-[30px] justify-between`}>
               <li>
                 <Link
                   href={"/services"}
@@ -115,6 +116,7 @@ export const Navigation = () => {
           </nav>
         </div>
 
+        {/* Mobile menu button with sliding animation */}
         <div
           className="md:hidden cursor-pointer relative w-fit h-full overflow-hidden"
           onClick={() => {
@@ -122,26 +124,24 @@ export const Navigation = () => {
           }}
         >
           <div className={`flex ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center cursor-pointer ${menuTextColor}`}>
-            <div className='grid gap-1'>
+            <div className={`grid gap-1 transition-transform duration-500 ${hamburger ? '-translate-x-2' : 'translate-x-0'}`}>
               <div
-                className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
+                className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
               />
               <div
-                className={`w-6 h-0.5 ${menuBgColor2} transition-opacity duration-300 ${hamburger ? 'opacity-0' : ''}`}
+                className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'opacity-0' : ''}`}
               />
               <div
-                className={`w-6 h-0.5 ${menuBgColor2} transition-transform duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
+                className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
               />
             </div>
-
-            <p className=' font-bold'>Menu</p>
+            <p className={`font-bold transition-transform duration-500 ${hamburger ? 'translate-x-2' : 'translate-x-0'}`}>Menu</p>
           </div>
         </div>
       </header>
 
       <div
-        className={`flex py-4 px-4 flex-col gap-2 fixed w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 ${hamburger ? "top-[70px] h-[100vh] md:h-fit" : "top-[-400%] h-fit"
-          } text-center text-black bg-white left-0`}
+        className={`flex py-4 px-4 flex-col gap-2 fixed w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 ${hamburger ? "top-[70px] h-[100vh] md:h-fit" : "top-[-400%] h-fit"} text-center text-black bg-white left-0`}
         style={{ transition: "all 0.5s ease-in" }}
       >
         {menuItems.map((item, index) => (
@@ -151,13 +151,14 @@ export const Navigation = () => {
             onClick={() => setHamburger(prevVal => !prevVal)}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
-            href={item.href}>{item.text}
-            
+            href={item.href}>
+            {item.text}
             <FaLongArrowAltRight className={`text-2xl font-light transform ${hoveredIndex === index ? '-rotate-45 duration-500' : 'rotate-0'}`} />
-            </Link>
+          </Link>
         ))}
       </div>
     </>
   );
 };
 
+export default Navigation;

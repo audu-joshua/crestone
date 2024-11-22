@@ -7,53 +7,52 @@ export const Faq = () => {
 
   const faqData = [
     {
-      question: "Who are these courses designed for?",
+      question: "Who are these services designed for?",
       answer:
-        "Our courses cater to a wide audience, including beginners looking to start their real estate journey, experienced investors seeking to expand their knowledge, and anyone interested in real estate as an investment avenue.",
+        "Our services cater to homebuyers, sellers, investors, and renters looking for expert guidance in navigating the real estate market.",
     },
     {
-      question: "Are these courses suitable for international students?",
+      question: "Do you work with international buyers or investors?",
       answer:
-        "Absolutely! Our courses are designed to be accessible to students from around the world. While some content may be region-specific, the core principles of real estate investment are applicable globally.",
+        "Yes, we work with clients from around the globe. Whether you’re relocating or investing, we provide tailored support to meet your needs.",
     },
     {
-      question: "How long are the courses, and can I study at my own pace?",
+      question: "How do you ensure I find the perfect property?",
       answer:
-        "Course lengths vary depending on the subject matter and depth of coverage. Most courses are self-paced, allowing you to study at a pace that suits your schedule.",
+        "We start by understanding your unique preferences and goals, then leverage our market expertise and extensive listings to match you with properties that align with your vision.",
     },
     {
-      question:
-        "Do I need prior experience in real estate to enroll in your courses?",
+      question: "Do you assist with selling properties?",
       answer:
-        "No prior experience is required. Our courses are structured to accommodate both beginners and experienced individuals. We start with the basics and progress to advanced topics.",
+        "Absolutely! From setting the right price to marketing your property effectively, we offer end-to-end support to ensure a smooth and profitable sale.",
     },
     {
-      question: "What kind of support can I expect during the course? ",
+      question: "What kind of support can I expect during the buying or selling process?",
       answer:
-        "We provide comprehensive support, including access to instructors for course-related questions and assistance. You'll also have access to discussion forums where you can interact with fellow students.",
+        "We provide personalized assistance at every step, including property searches, negotiations, paperwork, and closing, ensuring a stress-free experience.",
     },
     {
-      question: "Is there a certification upon course completion?",
+      question: "Do you offer virtual tours or online property viewings?",
       answer:
-        "Yes, upon successfully completing a course, you will receive a certificate from SV Investment. This certificate can be a valuable addition to your professional profile.r 2",
+        "Yes, we offer virtual tours for many of our listings, making it easy for you to explore properties from the comfort of your home.",
     },
     {
-      question: "Are there any prerequisites for enrollment?",
+      question: "How do I get started with buying, selling, or renting a property?",
       answer:
-        "Most of our courses have no specific prerequisites. However, we recommend having a basic understanding of real estate concepts if you're enrolling in more advanced courses.",
+        "It’s simple! Contact us to discuss your needs, and we’ll guide you through the process from start to finish, whether you’re buying, selling, or renting.",
     },
     {
-      question:
-        "What is the enrollment process, and how do I access the course materials?",
+      question: "Do you offer advice on property investments?",
       answer:
-        "The enrollment process is straightforward. Once you choose a course and complete the payment, you will receive login credentials to access the course materials on our platform.",
+        "Yes, we provide expert advice on real estate investments, helping you identify opportunities that align with your financial goals.",
     },
     {
-      question: "Do you offer refunds if I'm not satisfied with the course?",
+      question: "What if I’m not satisfied with the property options you provide?",
       answer:
-        "We strive to ensure your satisfaction. If you find that a course does not meet your expectations, please reach out to our support team.",
+        "Your satisfaction is our priority. If our initial options don’t meet your expectations, we’ll refine our search to find the perfect match.",
     },
   ];
+  
 
   return (
     <div className="px-3 py-4 md:py-16 md:px-6 lg:px-12 bg-[#EFEFEF] md:flex md:justify-between md:gap-10 lg:gap-12 sm:px-[40]">

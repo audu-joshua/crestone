@@ -15,9 +15,7 @@ export function BecomeMember() {
         </p>
 
         <p className="text-[#F5F5F5] text-[16px] mb-[30px] lg:mb-[51px] ">
-          Are you interested in learning how to invest in real estate but
-          don&apos;t know where to start? SV Investment is here to help. <br />{" "}
-          And the best part? As a new member, you&apos;ll receive benefits
+        Ready to dive into the world of real estate investment but unsure where to begin? With Credstone, you'll gain the knowledge and tools to build a prosperous future.Join today and unlock exclusive benefits designed to kickstart your journey.
         </p>
 
         <Link

@@ -36,23 +36,16 @@ export function ListingGallery() {
     };
   }, []);
 
-  const [name, setname] = useState("Audu") 
-
-   const handleclick = () => {
-      setname("Joshua")
-  }
-
   return (
     <div>
       <div className=' px-3 md:px-6 lg:px-12 md:flex bg-white md:py-14 lg:py-20 justify-between md:gap-12 text-black'>
         <div className='md:w-[50%]'>
           <h2 className='text-4xl py-10 md font-bold leading-tight'> Listings Gallery</h2>
-          <h3> {name} </h3>
-          <button onClick={handleclick}> click here</button>
+          
         </div>
         <div className='md:w-[50%]'>
           <p className='text-base'>
-            Figma ipsum component variant main layer. Font star variant blur union link move component blur arrange. Underline clip bullet italic comment strikethrough ipsum. Arrange ipsum figma arrange underline asset bold. Vector text pixel move community vector content ipsum. Underline invite clip layout vertical font ipsum hand undo comment. Bold group thumbnail fill asset pen. Subtract duplicate layer arrange star outline. Scrolling stroke blur horizontal draft flows pencil style stroke. Object.
+          Step into a curated showcase of extraordinary properties. From modern marvels to timeless classics, explore spaces designed to inspire and elevate your lifestyle. Your dream home awaits—take a closer look.
           </p>
         </div>
       </div>

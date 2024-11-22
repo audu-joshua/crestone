@@ -19,7 +19,7 @@ export default function CommunityForum() {
             <div className='grid gap-3 grid-cols-1 lg:w-[50%] md:w-[80%] '>
 
                 <div className='bg-[#FFFFFF] border border-[#D7D7D7] p-2 rounded-lg pb-4 md:pb-0'>
-                    <div className=' flex justify-between border-b-[1.22px] border-solid pb-4 border-b-[#D7D7D7]'>
+                    <div className=' flex justify-between border-b-[1.22px] border-solid pb-4 border-b-[#D7D7D7] md:h-fit'>
                         <div className=' bg-[#4E53EE] p-3 rounded-lg'>
                         <img src={'images/CV1.svg'}/>
                         </div>
