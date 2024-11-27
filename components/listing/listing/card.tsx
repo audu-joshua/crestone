@@ -6,7 +6,7 @@ const ContactInfoCard = () => {
     <div className="border border-solid border-[#d4d3d3] bg-gray-100 p-4 md:p-6 rounded-lg shadow">
       <div className="flex items-center justify-between space-x-4 mb-4">
         <div className='flex gap-2 items-center'>
-        <img src={'/images/T2.svg'} width={80} height={80} alt="Lance Straull" className="rounded-full" />
+        <img src={'/images/T2.svg'} width={65} height={65} alt="Lance Straull" className="rounded-full" />
           <div>
           <h2 className="text-lg font-medium">Lance Straull</h2>
           <p className="text-gray-500">Italian Investor</p>
