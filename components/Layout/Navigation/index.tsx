@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FaLongArrowAltRight } from 'react-icons/fa';
@@ -15,18 +15,26 @@ export const Navigation = () => {
   const pathname = usePathname();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const handleMouseEnter = (index: number) => {
+  // Add type annotation for the index parameter
+  const handleMouseEnter = (index: number): void => {
     setHoveredIndex(index);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (): void => {
     setHoveredIndex(null);
   };
+
+  // Add interface for menu items
+  interface MenuItem {
+    href: string;
+    text: string;
+    className?: string;
+  }
 
   const menuItems = [
     { href: "/", text: "Home" },
     { href: "/about", text: "About" },
-    { href: "/listing", text: "Listing" },
+    { href: "/apartments", text: "Listing" },
     { href: "/contact", text: "Help Center" },
     { href: "/career", text: "Become a Member", className: "text-red-600 hover:bg-[#ffba00] hover:text-black" }
   ];
@@ -57,36 +65,48 @@ export const Navigation = () => {
         </Link>
 
         <div className='hidden md:flex justify-between w-full py-3 items-center'>
+          {/* Navigation Button Container */}
           <div
-            className="relative w-fit p-[4px] overflow-hidden"
-            onClick={() => {
-              setHamburger((prevVal) => !prevVal);
-            }}
+            className={`
+              relative w-fit overflow-hidden transition-all duration-300 ease-in-out
+              ${hamburger ? 'w-64' : 'w-28'}
+            `}
+            onClick={() => setHamburger((prevVal) => !prevVal)}
           >
-            <div className={`flex cursor-pointer ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center ${menuTextColor} relative`}>
-              {/* Hamburger icon with sliding animation */}
-              <div className={`grid gap-1 transition-transform duration-500 ${hamburger ? '-translate-x-2' : 'translate-x-0'}`}>
-                <div
-                  className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
-                />
-                <div
-                  className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'opacity-0' : ''}`}
-                />
-                <div
-                  className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
-                />
+            <div className={`
+              flex cursor-pointer ${menuBgColor} py-2 px-4 gap-2 rounded-2xl items-center ${menuTextColor} 
+              transition-all duration-300 ease-in-out
+              ${hamburger ? 'justify-between w-full' : 'justify-between'}
+            `}>
+              {/* Hamburger icon with enhanced animations */}
+              <div className={`
+                grid gap-1 transition-all duration-300 ease-in-out
+                ${hamburger ? '-translate-x-2' : 'translate-x-0'}
+              `}>
+                <div className={`
+                  w-6 h-0.5 ${menuBgColor2} transition-all duration-300
+                  ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}
+                `}/>
+                <div className={`
+                  w-6 h-0.5 ${menuBgColor2} transition-all duration-300
+                  ${hamburger ? 'opacity-0' : ''}
+                `}/>
+                <div className={`
+                  w-6 h-0.5 ${menuBgColor2} transition-all duration-300
+                  ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}
+                `}/>
               </div>
-              {/* Menu text with sliding animation */}
-              <p className={`font-bold transition-transform duration-500 ${hamburger ? 'translate-x-2' : 'translate-x-0'}`}>Menu</p>
+              {/* Menu text with enhanced animations */}
+              <p className={`
+                font-bold transition-all duration-300 ease-in-out
+                ${hamburger ? 'translate-x-2' : 'translate-x-0'}
+              `}>Menu</p>
             </div>
           </div>
 
           <div>
             <Link href={"/"}>
-              <img
-                src={logoSrc}
-                alt="logo"
-              />
+              <img src={logoSrc} alt="logo" />
             </Link>
           </div>
 
@@ -116,46 +136,78 @@ export const Navigation = () => {
           </nav>
         </div>
 
-        {/* Mobile menu button with sliding animation */}
+        {/* Mobile menu button with enhanced animations */}
         <div
-          className="md:hidden cursor-pointer relative w-fit h-full overflow-hidden"
-          onClick={() => {
-            setHamburger((prevVal) => !prevVal);
-          }}
+          className={`
+            md:hidden cursor-pointer relative overflow-hidden
+            transition-all duration-300 ease-in-out
+            ${hamburger ? 'w-64' : 'w-28'}
+          `}
+          onClick={() => setHamburger((prevVal) => !prevVal)}
         >
-          <div className={`flex ${menuBgColor} py-2 px-4 w-28 justify-between rounded-2xl items-center cursor-pointer ${menuTextColor}`}>
-            <div className={`grid gap-1 transition-transform duration-500 ${hamburger ? '-translate-x-2' : 'translate-x-0'}`}>
-              <div
-                className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}`}
-              />
-              <div
-                className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'opacity-0' : ''}`}
-              />
-              <div
-                className={`w-6 h-0.5 ${menuBgColor2} transition-all duration-300 ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}`}
-              />
+          <div className={`
+            flex ${menuBgColor} py-2 px-4 rounded-2xl items-center cursor-pointer ${menuTextColor}
+            transition-all duration-300 ease-in-out
+            ${hamburger ? 'justify-between w-full' : 'justify-between'}
+          `}>
+            <div className={`
+              grid gap-1 transition-all duration-300 ease-in-out
+              ${hamburger ? '-translate-x-2' : 'translate-x-0'}
+            `}>
+              <div className={`
+                w-6 h-0.5 ${menuBgColor2} transition-all duration-300
+                ${hamburger ? 'transform rotate-45 translate-y-1.5' : ''}
+              `}/>
+              <div className={`
+                w-6 h-0.5 ${menuBgColor2} transition-all duration-300
+                ${hamburger ? 'opacity-0' : ''}
+              `}/>
+              <div className={`
+                w-6 h-0.5 ${menuBgColor2} transition-all duration-300
+                ${hamburger ? 'transform -rotate-45 -translate-y-1.5' : ''}
+              `}/>
             </div>
-            <p className={`font-bold transition-transform duration-500 ${hamburger ? 'translate-x-2' : 'translate-x-0'}`}>Menu</p>
+            <p className={`
+              font-bold transition-all duration-300 ease-in-out
+              ${hamburger ? 'translate-x-2' : 'translate-x-0'}
+            `}>Menu</p>
           </div>
         </div>
       </header>
 
+      {/* Menu dropdown with enhanced animations */}
       <div
-        className={`flex py-4 px-4 flex-col gap-2 fixed w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 ${hamburger ? "top-[70px] h-[100vh] md:h-fit" : "top-[-400%] h-fit"} text-center text-black bg-white left-0`}
-        style={{ transition: "all 0.5s ease-in" }}
+        className={`
+          fixed w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 
+          transition-all duration-300 ease-in-out
+          ${hamburger ? 'top-[70px] opacity-100' : 'top-[-100%] opacity-0'}
+          text-center text-black bg-white left-0
+        `}
       >
-        {menuItems.map((item, index) => (
-          <Link
-            key={index}
-            className={`flex justify-between hover:ease-in-out hover:duration-1000 cursor-pointer hover:bg-black hover:text-white rounded-2xl px-8 py-4 bg-[#F4F4F4] ${item.className ?? ''}`}
-            onClick={() => setHamburger(prevVal => !prevVal)}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-            href={item.href}>
-            {item.text}
-            <FaLongArrowAltRight className={`text-2xl font-light transform ${hoveredIndex === index ? '-rotate-45 duration-500' : 'rotate-0'}`} />
-          </Link>
-        ))}
+        <div className="flex flex-col gap-2 p-4">
+          {menuItems.map((item, index) => (
+            <Link
+              key={index}
+              className={`
+                flex justify-between items-center transition-all duration-300 ease-in-out
+                hover:bg-black hover:text-white rounded-2xl px-8 py-4 bg-[#F4F4F4]
+                ${item.className ?? ''}
+              `}
+              onClick={() => setHamburger(false)}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+              href={item.href}
+            >
+              {item.text}
+              <FaLongArrowAltRight 
+                className={`
+                  text-2xl font-light transform transition-all duration-300
+                  ${hoveredIndex === index ? '-rotate-45' : 'rotate-0'}
+                `} 
+              />
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );

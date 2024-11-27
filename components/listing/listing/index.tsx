@@ -1,43 +1,77 @@
 "use client"
 import React, { useState } from 'react';
-import { ChevronDown, ArrowUpRight } from 'lucide-react';
-import { Property, Category } from '@/utils/apatrment';
+import Link from 'next/link';
+import { ChevronDown, ArrowUpRight, Loader2 } from 'lucide-react';
+import { Property, Category } from '@/utils/types';
 import { apartmentData } from '@/utils/apatrment';
 
 interface ListingCardProps {
   property: Property;
 }
 
+const PropertyLink: React.FC<ListingCardProps> = ({ property }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => {
+    setIsLoading(true);
+  };
+
+  return (
+    <Link
+      href={`/apartments/${property.slug}`}
+      className="md:flex md:items-center text-white m-2 cursor-pointer"
+      style={{ transition: "all 0.5s ease-in" }}
+      onClick={handleClick}
+    >
+      <p className='bg-black w-full p-2 py-3 rounded-xl justify-center hover:text-red-600 flex cursor-pointer items-center gap-2'>
+        {isLoading ? (
+          <>
+            Loading 
+            <span>
+              <Loader2 size={20} className="animate-spin" />
+            </span>
+          </>
+        ) : (
+          <>
+            View Details 
+            <span>
+              <ArrowUpRight size={20} />
+            </span>
+          </>
+        )}
+      </p>
+    </Link>
+  );
+};
+
 const ListingCard: React.FC<ListingCardProps> = ({ property }) => (
   <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-    <div className='grid md:flex md:w-full md:justify-between '>
-    <div className='md:flex md:justify-between md:w-[80%]'>
-    <div className="flex gap-4">
-      <div className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden">
-        <img 
-          src={property.image || "/api/placeholder/400/320"} 
-          alt={property.name}
-          className="w-full h-full object-cover"
-        />
+    <div className='grid md:flex md:w-full md:justify-between'>
+      <div className='md:flex md:justify-between md:w-[80%]'>
+        <div className="flex gap-4">
+          <div className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden">
+            <img 
+              src={property.image || "/api/placeholder/400/320"} 
+              alt={property.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="grid">
+            <h3 className="font-semibold text-lg">{property.name}</h3>
+            <p className="text-red-500">{property.status}</p>
+            <p className="text-sm text-gray-600">{property.address}</p>
+          </div>
+        </div>
+        
+        <div className="hidden text-sm text-gray-600 md:flex md:items-center">
+          <p className='bg-[#EEEEEE] p-3 rounded-3xl border border-solid border-[#D8D8D8]'>{property.type}</p>
+        </div>
+        
+        <div className="hidden md:flex md:items-center text-sm">
+          <p className="font-semibold">{property.price}</p>
+        </div>
       </div>
-      <div className="grid">
-        <h3 className="font-semibold text-lg">{property.name}</h3>
-        <p className="text-red-500">{property.status}</p>
-        <p className="text-sm text-gray-600">{property.address}</p>
-      </div>
-    </div>
-    
-    <div className="hidden text-sm text-gray-600  md:flex md:items-center">
-  <p className='bg-[#EEEEEE] p-3 rounded-3xl border border-solid border-[#D8D8D8]'>{property.type}</p>
-</div>
-    
-    <div className="hidden md:flex md:items-center text-sm ">
-      <p className="font-semibold">{property.price}</p>
-    </div>
-    </div>
-    <div className=" text-white m-2 md:flex md:items-center">
-      <p className='bg-black w-full p-2 py-3 rounded-xl justify-center hover:text-red-600 flex cursor-pointer items-center gap-2'>View Details <span> <ArrowUpRight size={20} /> </span></p>
-    </div>
+      <PropertyLink property={property} />
     </div>
   </div>
 );
@@ -78,7 +112,7 @@ const Listing: React.FC = () => {
                 ? 'opacity-100 max-h-[1000px]' 
                 : 'opacity-0 max-h-0 overflow-hidden'
             }`}>
-              {category.properties.map((property, propIndex) => (
+              {category.properties.map((property) => (
                 <ListingCard key={property.id} property={property} />
               ))}
             </div>

@@ -5,7 +5,6 @@ import Insight from '@/components/listing/insight'
 import Listing from '@/components/listing/listing'
 import Blogs from '@/components/listing/blogs'
 
-
 export default function page() {
   return (
     <div>
