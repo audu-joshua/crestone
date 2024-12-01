@@ -1,10 +1,11 @@
 import React from 'react';
 import { Property } from '@/utils/types';
-import { Share2, Heart,LocateFixedIcon, Bluetooth, ChartLine, BoxIcon, Bed, BedIcon, LucidePersonStanding, CatIcon, HomeIcon, CloudRainIcon, LandPlotIcon, ChevronDown  } from 'lucide-react';
+import { Share2, Heart,LocateFixedIcon, Bluetooth, ChartLine, BoxIcon, Bed, BedIcon, LucidePersonStanding, CatIcon, HomeIcon, CloudRainIcon, LandPlotIcon, ChevronDown, List  } from 'lucide-react';
 import Map, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import PricingBlock from './pricing';
 import ContactInfoCard from './card';
+import Listing from '.';
 
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -16,7 +17,7 @@ interface OverviewProps {
 
 const Overview: React.FC<OverviewProps> = ({ property }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-3 md:p-6 rounded-lg shadow-md">
       <div className=' md:flex md:justify-between md:gap-4'>
         <div className=' md:w-full'>
           <div className=''>
@@ -210,7 +211,7 @@ const Overview: React.FC<OverviewProps> = ({ property }) => {
         <div className=' md:w-[70%] py-4 md:py-0 h-full grid gap-4'>
         {property.mapCoordinates && (
         <div className=" w-full">
-          <div className=" h-64 w-full rounded-lg overflow-hidden">
+          <div className=" h-64 md:h-96 w-full rounded-lg overflow-hidden">
             <Map
               initialViewState={{
                 latitude: property.mapCoordinates.lat,
@@ -235,9 +236,9 @@ const Overview: React.FC<OverviewProps> = ({ property }) => {
       )}
         <PricingBlock/>
         <ContactInfoCard/>
-
         </div>
       </div>
+      <Listing/>
     </div>
   );
 };

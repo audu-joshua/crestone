@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Loader2 } from 'lucide-react';
 import { apartmentData } from '@/utils/apatrment';
 import { Property } from '@/utils/types';
 import ApartmentDetailNav from '@/components/listing/listing/nav';
@@ -50,8 +50,11 @@ const ApartmentDetail = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Loading...</h1>
+        <div className="text-center flex gap-4 items-center">
+          <h1 className="text-2xl font-bold mb-4">Loading </h1>
+          <div className='flex items-center'>
+          <Loader2 size={20} className="animate-spin" />
+          </div>
         </div>
       </div>
     );
