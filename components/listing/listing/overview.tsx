@@ -6,6 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import PricingBlock from './pricing';
 import ContactInfoCard from './card';
 import Listing from '.';
+import PropertyMap from './map';
 
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -212,25 +213,7 @@ const Overview: React.FC<OverviewProps> = ({ property }) => {
         {property.mapCoordinates && (
         <div className=" w-full">
           <div className=" h-64 md:h-96 w-full rounded-lg overflow-hidden">
-            <Map
-              initialViewState={{
-                latitude: property.mapCoordinates.lat,
-                longitude: property.mapCoordinates.lng,
-                zoom: 12,
-              }}
-              mapboxAccessToken={MAPBOX_TOKEN}
-              mapStyle="mapbox://styles/mapbox/streets-v11"
-            >
-              <Marker
-                longitude={property.mapCoordinates.lng}
-                latitude={property.mapCoordinates.lat}
-                anchor="bottom"
-              >
-                <div className="p-2 bg-red-600 rounded-full">
-                  <HomeIcon size={20} color="white" />
-                </div>
-              </Marker>
-            </Map>
+          <PropertyMap property={property} />
           </div>
         </div>
       )}
