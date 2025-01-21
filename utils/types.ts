@@ -1,4 +1,5 @@
 // utils/types.ts
+
 export interface Property {
   id: string;
   slug: string;
@@ -21,7 +22,7 @@ export interface Property {
   builtBy?: string;
   propertyFloors?: number;
   condition?: 'New' | 'Good' | 'Excellent';
-  threeDplan?:'Yes' | 'No';
+  threeDplan?: 'Yes' | 'No';
   petsAllowed?: 'Yes' | 'No';
   mapCoordinates?: {
     lat: number;
@@ -35,4 +36,27 @@ export interface Category {
   available: number;
   properties: Property[];
 }
- 
+
+export interface MonthlyMetrics {
+  month: string;
+  appreciationRate: number;  // Percentage
+  vacancyRate: number;      // Percentage
+}
+
+export interface FinancialMetrics {
+  projectedAnnualRevenue: number;
+  operatingExpenseRatio: number;    // Percentage
+  capitalizationRate: number;       // Percentage
+  cashOnCashReturn: number;         // Percentage
+  internalRateOfReturn: number;     // Percentage
+  grossRentMultiplier: number;
+  monthlyMetrics: MonthlyMetrics[];
+}
+
+export interface PropertyWithMetrics extends Property {
+  financialMetrics: FinancialMetrics;
+}
+
+export interface CategoryWithMetrics extends Category {
+  properties: PropertyWithMetrics[];
+}

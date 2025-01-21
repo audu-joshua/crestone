@@ -1,7 +1,6 @@
 import React from 'react';
 import { Property } from '@/utils/types';
 import { Share2, Heart,LocateFixedIcon, Bluetooth, ChartLine, BoxIcon, Bed, BedIcon, LucidePersonStanding, CatIcon, HomeIcon, CloudRainIcon, LandPlotIcon, ChevronDown, List  } from 'lucide-react';
-import Map, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import PricingBlock from './pricing';
 import ContactInfoCard from './card';
@@ -9,11 +8,10 @@ import Listing from '.';
 import PropertyMap from './map';
 
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 
 interface OverviewProps {
-  property: Property;
+  property?: any; // Add property prop type here
 }
 
 const Overview: React.FC<OverviewProps> = ({ property }) => {
@@ -217,7 +215,7 @@ const Overview: React.FC<OverviewProps> = ({ property }) => {
           </div>
         </div>
       )}
-        <PricingBlock/>
+         <PricingBlock property={property} />
         <ContactInfoCard/>
         </div>
       </div>

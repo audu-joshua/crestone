@@ -1,8 +1,8 @@
 // utils/apartment.ts
-import { Property, Category } from './types';
+import { Property, Category, CategoryWithMetrics, PropertyWithMetrics  } from './types';
 import { slugify } from './slugify';
 
-export const apartmentData: Category[] = [
+export const apartmentData: CategoryWithMetrics[] = [  
   {
     title: 'Multi-Family Housing',
     slug: 'multi-family-housing',
@@ -35,6 +35,28 @@ export const apartmentData: Category[] = [
         mapCoordinates: {
           lat: 52.5200,
           lng: 13.4050
+        },
+        financialMetrics: {
+          projectedAnnualRevenue: 1200000,
+          operatingExpenseRatio: 45.2,
+          capitalizationRate: 5.8,
+          cashOnCashReturn: 7.2,
+          internalRateOfReturn: 12.5,
+          grossRentMultiplier: 8.4,
+          monthlyMetrics: [
+            { month: 'Jan', appreciationRate: 0.5, vacancyRate: 3.2 },
+            { month: 'Feb', appreciationRate: 0.6, vacancyRate: 2.8 },
+            { month: 'Mar', appreciationRate: 0.7, vacancyRate: 2.5 },
+            { month: 'Apr', appreciationRate: 0.8, vacancyRate: 2.2 },
+            { month: 'May', appreciationRate: 0.9, vacancyRate: 2.0 },
+            { month: 'Jun', appreciationRate: 1.0, vacancyRate: 1.8 },
+            { month: 'Jul', appreciationRate: 1.1, vacancyRate: 1.9 },
+            { month: 'Aug', appreciationRate: 1.2, vacancyRate: 2.1 },
+            { month: 'Sep', appreciationRate: 1.1, vacancyRate: 2.3 },
+            { month: 'Oct', appreciationRate: 1.0, vacancyRate: 2.5 },
+            { month: 'Nov', appreciationRate: 0.9, vacancyRate: 2.8 },
+            { month: 'Dec', appreciationRate: 0.8, vacancyRate: 3.0 }
+          ]
         }
       },
       {
@@ -64,6 +86,28 @@ export const apartmentData: Category[] = [
         mapCoordinates: {
           lat: 52.5202,
           lng: 13.4080
+        },
+        financialMetrics: {
+          projectedAnnualRevenue: 850000,
+          operatingExpenseRatio: 42.5,
+          capitalizationRate: 6.2,
+          cashOnCashReturn: 8.1,
+          internalRateOfReturn: 11.8,
+          grossRentMultiplier: 7.9,
+          monthlyMetrics: [
+            { month: 'Jan', appreciationRate: 0.4, vacancyRate: 4.0 },
+            { month: 'Feb', appreciationRate: 0.5, vacancyRate: 3.8 },
+            { month: 'Mar', appreciationRate: 0.6, vacancyRate: 3.5 },
+            { month: 'Apr', appreciationRate: 0.7, vacancyRate: 3.2 },
+            { month: 'May', appreciationRate: 0.8, vacancyRate: 3.0 },
+            { month: 'Jun', appreciationRate: 0.9, vacancyRate: 2.8 },
+            { month: 'Jul', appreciationRate: 1.0, vacancyRate: 2.9 },
+            { month: 'Aug', appreciationRate: 1.1, vacancyRate: 3.1 },
+            { month: 'Sep', appreciationRate: 1.0, vacancyRate: 3.3 },
+            { month: 'Oct', appreciationRate: 0.9, vacancyRate: 3.5 },
+            { month: 'Nov', appreciationRate: 0.8, vacancyRate: 3.8 },
+            { month: 'Dec', appreciationRate: 0.7, vacancyRate: 4.0 }
+          ]
         }
       }
     ]
@@ -100,6 +144,28 @@ export const apartmentData: Category[] = [
         mapCoordinates: {
           lat: 52.5236,
           lng: 13.3918
+        },
+        financialMetrics: {
+          projectedAnnualRevenue: 450000,
+          operatingExpenseRatio: 38.5,
+          capitalizationRate: 5.5,
+          cashOnCashReturn: 6.8,
+          internalRateOfReturn: 10.2,
+          grossRentMultiplier: 9.2,
+          monthlyMetrics: [
+            { month: 'Jan', appreciationRate: 0.3, vacancyRate: 2.0 },
+            { month: 'Feb', appreciationRate: 0.4, vacancyRate: 1.8 },
+            { month: 'Mar', appreciationRate: 0.5, vacancyRate: 1.5 },
+            { month: 'Apr', appreciationRate: 0.6, vacancyRate: 1.2 },
+            { month: 'May', appreciationRate: 0.7, vacancyRate: 1.0 },
+            { month: 'Jun', appreciationRate: 0.8, vacancyRate: 0.8 },
+            { month: 'Jul', appreciationRate: 0.9, vacancyRate: 0.9 },
+            { month: 'Aug', appreciationRate: 1.0, vacancyRate: 1.1 },
+            { month: 'Sep', appreciationRate: 0.9, vacancyRate: 1.3 },
+            { month: 'Oct', appreciationRate: 0.8, vacancyRate: 1.5 },
+            { month: 'Nov', appreciationRate: 0.7, vacancyRate: 1.8 },
+            { month: 'Dec', appreciationRate: 0.6, vacancyRate: 2.0 }
+          ]
         }
       }
     ]
@@ -136,6 +202,28 @@ export const apartmentData: Category[] = [
         mapCoordinates: {
           lat: 52.5224,
           lng: 13.4132
+        },
+        financialMetrics: {
+          projectedAnnualRevenue: 720000,
+          operatingExpenseRatio: 40.5,
+          capitalizationRate: 5.9,
+          cashOnCashReturn: 7.5,
+          internalRateOfReturn: 11.2,
+          grossRentMultiplier: 8.8,
+          monthlyMetrics: [
+            { month: 'Jan', appreciationRate: 0.4, vacancyRate: 3.5 },
+            { month: 'Feb', appreciationRate: 0.5, vacancyRate: 3.2 },
+            { month: 'Mar', appreciationRate: 0.6, vacancyRate: 2.9 },
+            { month: 'Apr', appreciationRate: 0.7, vacancyRate: 2.6 },
+            { month: 'May', appreciationRate: 0.8, vacancyRate: 2.4 },
+            { month: 'Jun', appreciationRate: 0.9, vacancyRate: 2.2 },
+            { month: 'Jul', appreciationRate: 1.0, vacancyRate: 2.3 },
+            { month: 'Aug', appreciationRate: 1.1, vacancyRate: 2.5 },
+            { month: 'Sep', appreciationRate: 1.0, vacancyRate: 2.7 },
+            { month: 'Oct', appreciationRate: 0.9, vacancyRate: 2.9 },
+            { month: 'Nov', appreciationRate: 0.8, vacancyRate: 3.2 },
+            { month: 'Dec', appreciationRate: 0.7, vacancyRate: 3.5 }
+          ]
         }
       },
       {
@@ -165,7 +253,30 @@ export const apartmentData: Category[] = [
         mapCoordinates: {
           lat: 52.5203,
           lng: 13.4098
+        },
+        financialMetrics: {
+          projectedAnnualRevenue: 980000,
+          operatingExpenseRatio: 43.8,
+          capitalizationRate: 6.1,
+          cashOnCashReturn: 7.8,
+          internalRateOfReturn: 12.1,
+          grossRentMultiplier: 8.2,
+          monthlyMetrics: [
+            { month: 'Jan', appreciationRate: 0.6, vacancyRate: 3.0 },
+            { month: 'Feb', appreciationRate: 0.7, vacancyRate: 2.7 },
+            { month: 'Mar', appreciationRate: 0.8, vacancyRate: 2.4 },
+            { month: 'Apr', appreciationRate: 0.9, vacancyRate: 2.1 },
+            { month: 'May', appreciationRate: 1.0, vacancyRate: 1.9 },
+            { month: 'Jun', appreciationRate: 1.1, vacancyRate: 1.7 },
+            { month: 'Jul', appreciationRate: 1.2, vacancyRate: 1.8 },
+            { month: 'Aug', appreciationRate: 1.3, vacancyRate: 2.0 },
+            { month: 'Sep', appreciationRate: 1.2, vacancyRate: 2.2 },
+            { month: 'Oct', appreciationRate: 1.1, vacancyRate: 2.4 },
+            { month: 'Nov', appreciationRate: 1.0, vacancyRate: 2.7 },
+            { month: 'Dec', appreciationRate: 0.9, vacancyRate: 3.0 }
+          ]
         }
+
       }
     ]
   },
@@ -201,6 +312,28 @@ export const apartmentData: Category[] = [
         mapCoordinates: {
           lat: 52.5232,
           lng: 13.3945
+        },
+        financialMetrics: {
+          projectedAnnualRevenue: 550000,
+          operatingExpenseRatio: 39.5,
+          capitalizationRate: 5.7,
+          cashOnCashReturn: 7.0,
+          internalRateOfReturn: 10.8,
+          grossRentMultiplier: 9.0,
+          monthlyMetrics: [
+            { month: 'Jan', appreciationRate: 0.3, vacancyRate: 2.8 },
+            { month: 'Feb', appreciationRate: 0.4, vacancyRate: 2.5 },
+            { month: 'Mar', appreciationRate: 0.5, vacancyRate: 2.2 },
+            { month: 'Apr', appreciationRate: 0.6, vacancyRate: 1.9 },
+            { month: 'May', appreciationRate: 0.7, vacancyRate: 1.7 },
+            { month: 'Jun', appreciationRate: 0.8, vacancyRate: 1.5 },
+            { month: 'Jul', appreciationRate: 0.9, vacancyRate: 1.6 },
+            { month: 'Aug', appreciationRate: 1.0, vacancyRate: 1.8 },
+            { month: 'Sep', appreciationRate: 0.9, vacancyRate: 2.0 },
+            { month: 'Oct', appreciationRate: 0.8, vacancyRate: 2.2 },
+            { month: 'Nov', appreciationRate: 0.7, vacancyRate: 2.5 },
+            { month: 'Dec', appreciationRate: 0.6, vacancyRate: 2.8 }
+          ]
         }
       }
     ]
@@ -225,13 +358,13 @@ export const apartmentData: Category[] = [
   }
 ];
 
-export function findPropertyBySlug(slug: string): Property | undefined {
+export function findPropertyBySlug(slug: string): PropertyWithMetrics | undefined {
   console.log('Searching for slug:', slug);
 
   for (const category of apartmentData) {
     console.log('Searching in category:', category.title);
 
-    const property = category.properties.find((p: Property) => {
+    const property = category.properties.find((p: PropertyWithMetrics) => {
       const match = p.slug === slug;
       console.log(`Comparing ${p.slug} with ${slug}: ${match}`);
       return match;

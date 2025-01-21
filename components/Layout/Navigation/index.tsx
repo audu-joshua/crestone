@@ -1,146 +1,147 @@
 "use client";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { Menu, X, ArrowRight } from "lucide-react";
 
-const activeStyle = {
-  fontWeight: 700,
-  paddingBottom: "7px",
-  borderBottom: "1px solid black",
-};
-
-interface MenuItem {
-  href: string;
-  text: string;
-  className?: string;
-}
-
-const menuItems: MenuItem[] = [
+const menuItems = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
   { href: "/apartments", text: "Listing" },
   { href: "/contact", text: "Help Center" },
-  { href: "/career", text: "Become a Member", className: "text-red-600 hover:bg-[#ffba00] hover:text-black" },
+  { href: "/career", text: "Become a Member" },
 ];
 
 export const Navigation = () => {
-  const [hamburger, setHamburger] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const handleMouseEnter = (index: number) => setHoveredIndex(index);
-  const handleMouseLeave = () => setHoveredIndex(null);
+  const [activeItem, setActiveItem] = useState<string | null>(null);
 
   const isContactOrHomePage = pathname === "/contact" || pathname === "/";
 
-  const styles = {
-    logoSrc: isContactOrHomePage ? "/images/logowhite.svg" : "/images/logoblack.svg",
-    menuBgColor: isContactOrHomePage ? "bg-white" : "bg-black",
-    menuTextColor: isContactOrHomePage ? "text-black" : "text-white",
-    menuBgColor2: isContactOrHomePage ? "bg-black" : "bg-white",
-    signupHelp: isContactOrHomePage ? "text-white" : "text-black",
-    signupHelpDivider: isContactOrHomePage ? "border-r-white border-l-white" : "border-r-black border-l-black",
-    navBg: isContactOrHomePage ? "bg-black" : "bg-white",
-  };
-
-  const toggleHamburger = () => setHamburger((prev) => !prev);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       <header
-        className={`${styles.navBg} fixed w-full flex items-center justify-between top-0 px-5 md:px-6 xl:px-[97px] py-2 md:py-0 z-50`}
+        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-white shadow-lg" : isContactOrHomePage ? "bg-transparent" : "bg-white"
+        }`}
       >
-        <Link href="/">
-          <img src={styles.logoSrc} alt="logo" className="md:hidden" />
-        </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <Link href="/" className="flex-shrink-0">
+              <img
+                src={scrolled || !isContactOrHomePage ? "/images/logoblack.svg" : "/images/logowhite.svg"}
+                alt="logo"
+                className="h-8 w-auto"
+              />
+            </Link>
 
-        <div className="hidden md:flex justify-between w-full py-3 items-center">
-          <div
-            className={`relative w-fit overflow-hidden transition-all duration-300 ease-in-out ${hamburger ? "w-64" : "w-28"}`}
-            onClick={toggleHamburger}
-          >
-            <div
-              className={`flex py-2 cursor-pointer px-4 gap-2 rounded-2xl items-center ${styles.menuBgColor} ${styles.menuTextColor} transition-all duration-300 ease-in-out ${hamburger ? "justify-between w-full" : "justify-between"}`}
-            >
-              <div className="grid gap-1">
-                <div
-                  className={`w-6 h-0.5 ${styles.menuBgColor2} transition-all duration-300 ${hamburger ? "transform rotate-45 translate-y-1.5" : ""}`}
-                />
-                <div
-                  className={`w-6 h-0.5 ${styles.menuBgColor2} transition-all duration-300 ${hamburger ? "opacity-0" : ""}`}
-                />
-                <div
-                  className={`w-6 h-0.5 ${styles.menuBgColor2} transition-all duration-300 ${hamburger ? "transform -rotate-45 -translate-y-1.5" : ""}`}
-                />
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm lg:text-base font-medium transition-all duration-200 relative group ${
+                    scrolled || !isContactOrHomePage ? "text-gray-900" : "text-white"
+                  }`}
+                  onMouseEnter={() => setActiveItem(item.href)}
+                  onMouseLeave={() => setActiveItem(null)}
+                >
+                  {item.text}
+                  <span
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 transform origin-left transition-transform duration-200 ${
+                      scrolled || !isContactOrHomePage ? "bg-black" : "bg-white"
+                    } ${
+                      activeItem === item.href ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
+                </Link>
+              ))}
+              
+              <div className="flex items-center space-x-4">
+                <Link
+                  href="/signup"
+                  className={`px-6 py-2.5 rounded-full text-sm lg:text-base font-medium transition-all duration-300 
+                    bg-[#FFBA00] text-black hover:bg-black hover:text-white
+                    transform hover:scale-105 hover:-translate-y-0.5`}
+                >
+                  Sign Up
+                </Link>
               </div>
-              <p className="font-bold">Menu</p>
-            </div>
+            </nav>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`md:hidden inline-flex items-center justify-center p-2 rounded-md transition-colors duration-200 ${
+                scrolled || !isContactOrHomePage ? "text-black" : "text-white"
+              }`}
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
-
-          <Link href="/">
-            <img src={styles.logoSrc} alt="logo" />
-          </Link>
-
-          <nav>
-            <ul className={`grid grid-flow-col text-base items-center gap-x-8 ${styles.signupHelp}`}>
-              <li>
-                <Link href="/services" style={pathname.includes("/services") ? activeStyle : {}} className="font-bold">
-                  Help Center
-                </Link>
-              </li>
-              <span className={`h-4 ${styles.signupHelpDivider} w-1 border-2`}></span>
-              <li>
-                <Link href="/career" style={pathname.includes("/career") ? activeStyle : {}} className="font-bold">
-                  Signup
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
 
+        {/* Mobile menu */}
         <div
-          className={`md:hidden cursor-pointer relative overflow-hidden transition-all duration-300 ease-in-out ${hamburger ? "w-64" : "w-28"}`}
-          onClick={toggleHamburger}
+          className={`md:hidden transform transition-transform duration-300 ease-in-out ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          } fixed top-16 left-0 w-full h-screen bg-white z-40`}
         >
-          <div
-            className={`flex py-2  px-4 rounded-2xl items-center ${styles.menuBgColor} ${styles.menuTextColor} transition-all duration-300 ease-in-out ${hamburger ? "justify-between w-full" : "justify-between"}`}
-          >
-            <div className="grid gap-1 ">
-              <div
-                className={`w-6 h-0.5 ${styles.menuBgColor2} transition-all duration-300 ${hamburger ? "transform rotate-45 translate-y-1.5" : ""}`}
-              />
-              <div
-                className={`w-6 h-0.5 ${styles.menuBgColor2} transition-all duration-300 ${hamburger ? "opacity-0" : ""}`}
-              />
-              <div
-                className={`w-6 h-0.5 ${styles.menuBgColor2} transition-all duration-300 ${hamburger ? "transform -rotate-45 -translate-y-1.5" : ""}`}
-              />
+          <div className="px-4 pt-2 pb-3">
+            {menuItems.map((item, index) => (
+              <div key={item.href} className="relative">
+                <Link
+                  href={item.href}
+                  className="flex items-center justify-between px-4 py-4 text-base font-medium text-gray-900 group transition-all duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span className="group-hover:text-[#FFBA00]">{item.text}</span>
+                  <ArrowRight className="h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#FFBA00]" />
+                </Link>
+                {index !== menuItems.length - 1 && (
+                  <div className="mx-4 h-[1px] bg-gray-100" />
+                )}
+              </div>
+            ))}
+            <div className="pt-10 px-4">
+              <Link
+                href="/signup"
+                className="block w-full text-center px-4 py-4 rounded-full bg-[#FFBA00] text-black font-medium 
+                  hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105"
+                onClick={() => setIsOpen(false)}
+              >
+                Sign Up
+              </Link>
             </div>
-            <p className="font-bold">Menu</p>
           </div>
         </div>
       </header>
-
-      <div
-        className={`fixed h-full md:h-fit w-full md:w-[40%] lg:w-[30%] md:rounded-xl z-50 transition-all duration-300 ease-in-out ${hamburger ? "top-[55px] pt-4 md:pt-0 md:top-[65px] opacity-100" : "top-[-100%] opacity-0"} text-center bg-white left-0`}
-      >
-        <div className="flex flex-col gap-2 p-4">
-          {menuItems.map((item, index) => (
-            <Link
-              key={item.href}
-              className={`flex justify-between items-center transition-all duration-300 ease-in-out hover:bg-black hover:text-white rounded-2xl px-8 py-4 bg-[#F4F4F4] ${item.className ?? ""}`}
-              onClick={() => setHamburger(false)}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-              href={item.href}
-            >
-              {item.text}
-              <FaLongArrowAltRight className={` transition-transform duration-300 ease-in-out ${hoveredIndex === index ? "-rotate-45 text-white" : "rotate-0"} `}/>
-            </Link>
-          ))}
-        </div>
-      </div>
+      
+      {/* Overlay for mobile menu */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </>
   );
 };
+
+export default Navigation;
