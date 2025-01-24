@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { usePathname } from "next/navigation";
+import { useRouter } from 'next/navigation'
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 
@@ -27,6 +29,31 @@ export const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const [user, setUser] = useState<any>(null)
+  const router = useRouter()
+  const supabase = createClientComponentClient()
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      setUser(session?.user ?? null)
+    }
+
+    getUser()
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [supabase.auth])
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+  }
+
 
   return (
     <>
@@ -70,6 +97,22 @@ export const Navigation = () => {
               ))}
               
               <div className="flex items-center space-x-4">
+        {user ? (
+          <>
+            <span className="text-gray-600">
+              {user.email}
+            </span>
+            <button
+              onClick={handleSignOut}
+              className={`px-6 py-2.5 rounded-full text-sm lg:text-base font-medium transition-all duration-300 
+                bg-[#FFBA00] text-black hover:bg-black hover:text-white
+                transform hover:scale-105 hover:-translate-y-0.5`}
+            >
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <div className="flex items-center space-x-4">
                 <Link
                   href="/signup"
                   className={`px-6 py-2.5 rounded-full text-sm lg:text-base font-medium transition-all duration-300 
@@ -79,6 +122,8 @@ export const Navigation = () => {
                   Sign Up
                 </Link>
               </div>
+        )}
+      </div>
             </nav>
 
             {/* Mobile menu button */}
@@ -119,7 +164,8 @@ export const Navigation = () => {
                 )}
               </div>
             ))}
-            <div className="pt-10 px-4">
+            <div className="flex w-full justify-between">
+            <div className="pt-10 px-4 w-full">
               <Link
                 href="/signup"
                 className="block w-full text-center px-4 py-4 rounded-full bg-[#FFBA00] text-black font-medium 
@@ -128,6 +174,18 @@ export const Navigation = () => {
               >
                 Sign Up
               </Link>
+            </div>
+
+            <div className="pt-10 px-4 w-full">
+              <Link
+                href="/signup"
+                className="block w-full text-center px-4 py-4 rounded-full border-2 border-solid border-[#FFBA00] text-black font-medium 
+                  hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105"
+                onClick={() => setIsOpen(false)}
+              >
+                Log In
+              </Link>
+            </div>
             </div>
           </div>
         </div>
