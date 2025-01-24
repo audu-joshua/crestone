@@ -8,7 +8,7 @@ export default function Hero() {
 
   return (
 
-<div className="bg-[url('/images/heroCoverMobile.png')] md:bg-[url('/images/heroCoverDesktop.png')] bg-cover bg-center">
+<div className="bg-[url('/images/heroMobile2.png')] md:bg-[url('/images/heroDesktop2.png')] bg-cover bg-center">
 <div className='h-screen px-3 md:px-6 lg:px-12 flex flex-col justify-end bg-black bg-opacity-35 gradient'>
         <div className=' md:w-[80%] lg:w-[70%]'>
         <h1 className=' text-3xl md:text-4xl lg:text-5xl text-white leading-[37px] md:leading-[45px] lg:leading-[63px] font-medium lg:font-[580]'>
